@@ -1,5 +1,5 @@
 {
-  "name": "task",
+  "name": "registration-form",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -11,15 +11,22 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "~10.1.2",
+    "@angular/animations": "^10.1.2",
+    "@angular/cdk": "^10.2.1",
     "@angular/common": "~10.1.2",
     "@angular/compiler": "~10.1.2",
     "@angular/core": "~10.1.2",
     "@angular/forms": "~10.1.2",
+    "@angular/material": "^10.2.1",
     "@angular/platform-browser": "~10.1.2",
     "@angular/platform-browser-dynamic": "~10.1.2",
     "@angular/router": "~10.1.2",
+    "bootstrap": "4.1.1",
+    "hammerjs": "^2.0.8",
+    "intl-tel-input": "^17.0.3",
+    "ngx-bootstrap": "^6.1.0",
     "rxjs": "~6.6.0",
+    "rxjs-compat": "^6.6.3",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
   },

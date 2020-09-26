@@ -1,1 +1,113 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+body {
+    background-color: #f4f4f4 !important;
+  }
+
+  .mat-step-label{
+    min-width: 0 !important;
+  }
+  .mat-horizontal-stepper-header .mat-step-icon{
+    margin-right: 0px !important;
+    margin-left: 0px !important;
+  }
+  .mat-step-icon{
+      height: 50px !important;
+      width: 50px !important;
+  }
+  .mat-icon{
+    height: 30px !important;
+    width: 30px !important;
+  }
+  .mat-step-icon .mat-icon{
+      font-size: 30px !important;
+  }
+
+  .mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit {
+    background: white !important;
+    color: #1777fb !important;
+}
+.mat-horizontal-stepper-header::before, .mat-horizontal-stepper-header::after, .mat-stepper-horizontal-line {
+    /* border-top-color: #1777fb; */
+    border-top-width: 6px !important;
+}
+.mat-horizontal-stepper-header{
+    padding: 0 !important;
+}
+.mat-step-header .mat-step-icon{
+    background-color: white !important;
+    color: #acacac;
+}
+/* .mat-step-header .mat-step-icon-state-done */
+/* .mat-horizontal-stepper-header::before, .mat-horizontal-stepper-header::after, .mat-stepper-horizontal-line {
+    border-top-color: #1777fb;
+    border-top-width: 6px !important;
+    background-color: #1777fb !important;
+    border: 26px solid white;
+} */
+
+.mat-step-header .mat-step-icon-state-done{
+  border: 2px solid #1777fb !important;
+  color: #1777fb !important;
+}
+
+.mat-step-header .mat-step-icon-state-edit, .mat-step-icon.mat-step-icon-selected  {
+    border: 2px solid red !important;
+    color: red !important;
+}
+.mat-horizontal-content-container{
+  padding: 0 !important;
+}
+.mat-horizontal-stepper-header-container {
+  margin: 0 50px;
+}
+
+// ::ng-deep .mat-step-header .mat-step-icon-selected {
+//   background-color: red !important; 
+// }
+// begin
+@mixin styleStepLine($index) {
+  .mat-horizontal-stepper-header {
+      &+.mat-stepper-horizontal-line:nth-child(#{$index}) {
+          height: 2px;
+          background-color: #1777fb;
+      }
+  }
+}
+
+@mixin styleEditedStepIcon($index) {
+  .mat-horizontal-stepper-header:nth-child(#{$index}) {
+      .mat-step-icon:not(.mat-step-icon-selected) {
+          background-color: #1777fb;
+      }
+  }
+}
+
+@mixin styleUnEditedStepIcon($index) {
+  .mat-horizontal-stepper-header:nth-child(#{$index}) {
+      .mat-step-icon:not(.mat-step-icon-selected) {
+          background-color: #1777fb;
+      }
+  }
+}
+
+.last-edited-step-1 {
+  @include styleStepLine(2);
+  @include styleEditedStepIcon(1);
+  @include styleUnEditedStepIcon(3);
+}
+
+.last-edited-step-2 {
+  @include styleStepLine(2);
+  @include styleStepLine(4);
+  @include styleEditedStepIcon(1);
+  @include styleEditedStepIcon(3);
+}
+.last-edited-step-3 {
+  @include styleStepLine(2);
+  @include styleStepLine(4);
+  @include styleStepLine(6);
+  @include styleEditedStepIcon(1);
+  @include styleEditedStepIcon(3);
+}
+

@@ -1,0 +1,74 @@
+<p class="headerParg">Verify your company </p>
+
+      <!-- Form 1: Personal Info -->
+      <form [formGroup]="verifyCompany">
+        <div class="form">
+          <p style="  text-align: center;">Entering the information correctly will facilitate the company verification process </p>
+          <!-- company NAme -->
+          <div class="inputContainer">
+            <p class="inputHead">Company Name</p>
+            <input type="text" name="companyname" class="formInput" placeholder="Enter your company name"
+              formControlName="companyname" />
+          </div>
+          <!-- Address -->
+          <div class="inputContainer">
+            <p class="inputHead">Address</p>
+            <input type="text" name="Address" class="formInput" placeholder="Enter your Address"
+              formControlName="Address" />
+          </div>
+   <!-- Business Email -->
+   <div class="inputContainer">
+    <p class="inputHead">Business Email</p>
+    <input type="text" name="businessEmail" class="formInput" placeholder="Enter your business email"
+      formControlName="businessEmail" />
+  </div>
+          <!-- Country -->
+          <div class="halfInputContainer">
+            <p class="inputHead">Country</p>
+            <mat-select class="formInput" placeholder="Enter your country" [(value)] ="selectedCountry">
+              <mat-option *ngFor="let country of countries" [value]="country">
+                {{country.name}}
+              </mat-option>
+            </mat-select>
+          </div>
+          <!-- city -->
+          <div class="halfInputContainer "  style="float: right !important;">
+            <p class="inputHead">City</p>
+            <mat-select class="formInput" placeholder="Enter your city" [(value)]="selectedCity">
+              <mat-option *ngFor="let city of selectedCountry.cities" [value]="city">
+                {{city.name}}
+              </mat-option>
+            </mat-select>
+          </div>
+
+           <!-- Phone -->
+           <div class="halfInputContainer nopadding">
+            <div style="display: flex;">
+              <div class="countrycode">
+                <p>{{selectedCountry.code}}</p>
+              </div>
+              <div style="padding: 5px;width: 100%;">
+                <p class="inputHead">Phone Number</p>
+                <input type="text" name="companyNumber" class="formInput" placeholder="Enter your company number"
+                  formControlName="companyNumber" />
+              </div>
+            </div>
+          </div>
+
+           <!-- Phone -->
+           <div class="halfInputContainer nopadding" style="float: right !important;">
+            <div style="display: flex;">
+              <div class="countrycode">
+                <p>{{selectedCountry.code}}</p>
+              </div>
+              <div style="padding: 5px;width: 100%;">
+                <p class="inputHead">Phone Number</p>
+                <input type="text" name="companyNumber2" class="formInput" placeholder="Enter your company Number"
+                  formControlName="companyNumber2" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <button mat-raised-button (click)="verifyData()" type="submit" class="primaryBtn">Next</button>
+        <button mat-button (click)="back()" class="backBtn">Back</button>
+        </form>

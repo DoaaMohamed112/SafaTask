@@ -1,0 +1,51 @@
+<div class="main">
+  <mat-horizontal-stepper linear #stepper class="{{ 'last-edited-step-' + stepper.selectedIndex }}">
+    <!-- keep icons as numbers during edit-->
+    <ng-template matStepperIcon="edit" let-index="index">
+      <mat-icon class="material-icons-outlined" *ngIf="index == 0">{{icon0}}</mat-icon>
+      <mat-icon class="material-icons-outlined" *ngIf="index == 1">{{icon1}}</mat-icon>
+      <mat-icon class="material-icons-outlined" *ngIf="index == 2">{{icon2}}</mat-icon>
+      <mat-icon class="material-icons-outlined" *ngIf="index == 3">{{icon3}}</mat-icon>
+    </ng-template>
+    <ng-template matStepperIcon="done" let-index="index">
+      <mat-icon class="material-icons-outlined" *ngIf="index == 0">{{icon0}}</mat-icon>
+      <mat-icon class="material-icons-outlined" *ngIf="index == 1">{{icon1}}</mat-icon>
+      <mat-icon class="material-icons-outlined" *ngIf="index == 2">{{icon2}}</mat-icon>
+      <mat-icon class="material-icons-outlined" *ngIf="index == 3">{{icon3}}</mat-icon>
+    </ng-template>
+
+    <!-- changed step icons -->
+    <ng-template matStepperIcon="form">
+      <mat-icon class="material-icons-outlined">{{icon0}}</mat-icon>
+    </ng-template>
+
+    <ng-template matStepperIcon="verify">
+      <mat-icon class="material-icons-outlined">{{icon1}}</mat-icon>
+    </ng-template>
+
+    <ng-template matStepperIcon="upload">
+      <mat-icon class="material-icons-outlined">{{icon2}}</mat-icon>
+    </ng-template>
+
+    <ng-template matStepperIcon="last">
+      <mat-icon class="material-icons-outlined">{{icon3}}</mat-icon>
+    </ng-template>
+
+    <mat-step state="form">
+      <app-register-form (registerDataEmmiter) = "registerData($event,stepper)"></app-register-form>
+    </mat-step>
+
+    <mat-step state="verify">
+      <app-verify-form (nextEmitter) ="verifyData($event,stepper)" (backEmitter) = "back(stepper)"></app-verify-form>
+    </mat-step>
+
+    <mat-step state="upload">
+      <app-upload-form (nextEmitter) ="next(stepper)"  (backEmitter) = "back(stepper)"></app-upload-form>
+    </mat-step>
+
+    <mat-step state="last">
+      <app-submit-form (submitEmitter) ="submitData($event)" (backEmitter) = "back(stepper)"></app-submit-form>
+    </mat-step>
+
+  </mat-horizontal-stepper>
+</div>

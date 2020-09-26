@@ -1,0 +1,16 @@
+<p class="headerParg">Upload Company Logo</p>
+
+<!-- Form 1: Personal Info -->
+<form >
+  <div class="form">
+    <div class="imgContainer">
+      <div class="addIcon"><mat-icon style="vertical-align: text-top;">add</mat-icon></div>
+      <div class="shadow"></div>
+      <img class="doneImg" src="../../assets/photo.png">
+    </div>
+    <p class="parg">Only images with a size lower than 500 KB are allowed
+    </p>
+  </div>
+  <button mat-raised-button (click)="uploadImage()" type="submit" class="primaryBtn">Submit</button>
+  <button mat-button (click)="back()" class="backBtn">Back</button>
+</form>

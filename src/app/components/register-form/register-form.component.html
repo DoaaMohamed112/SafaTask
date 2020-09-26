@@ -1,0 +1,89 @@
+<p class="headerParg">Tell us more about you.</p>
+
+<!-- Form 1: Personal Info -->
+<form [formGroup]="loginForm">
+  <div class="form">
+    <!-- Full NAme -->
+    <div class="inputContainer" [ngStyle]="{'border-color':loginForm.get('fullname').invalid && (loginForm.get('fullname').dirty || loginForm.get('fullname').touched) ? 'red' : 'lightgray' }">
+      <p class="inputHead">Full Name</p>
+      <input id="fullname" type="text" name="fullname" class="formInput" placeholder="Enter your full name" formControlName="fullname"
+        required 
+        />
+    </div>
+    <div *ngIf="loginForm.get('fullname').invalid && (loginForm.get('fullname').dirty || loginForm.get('fullname').touched)" >
+      <div class="error" *ngIf="loginForm.get('fullname').errors.required">
+        Name is required.
+      </div>
+      <div class="error" *ngIf="loginForm.get('fullname').errors.minlength">
+        Name must be at least 4 characters long.
+      </div>
+    </div>
+    <!-- Business Email -->
+    <div class="inputContainer">
+      <p class="inputHead">Business Email</p>
+      <input type="email" name="businessEmail" class="formInput" placeholder="Enter your business email"
+        formControlName="businessEmail" required />
+    </div>
+    <div *ngIf="loginForm.get('businessEmail').invalid && (loginForm.get('businessEmail').dirty || loginForm.get('businessEmail').touched)" >
+      <div class="error" *ngIf="loginForm.get('businessEmail').errors.required">
+        Email is required.
+      </div>
+      <div class="error" *ngIf="loginForm.get('businessEmail').errors.email">
+        Please enter a valid email.
+      </div>
+    </div>
+
+    <!-- Country -->
+    <div class="halfInputContainer">
+      <p class="inputHead">Country</p>
+      <mat-select class="formInput" placeholder="Enter your country" [(value)]="selectedCountry">
+        <mat-option *ngFor="let country of countries" [value]="country" >
+          {{country.name}}
+        </mat-option>
+      </mat-select>
+    </div>
+
+    <!-- Phone -->
+    <div class="halfInputContainer nopadding" style="float: right !important;">
+      <div style="display: flex;">
+        <div class="countrycode">
+          <p>{{selectedCountry.code}}</p>
+        </div>
+        <div style="padding: 5px;width: 100%;">
+          <p class="inputHead">Phone Number</p>
+          <input type="text" name="businessEmail" class="formInput" placeholder="Enter your Phone Number"
+            formControlName="Phone" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Password -->
+    <div class="inputContainer">
+      <p class="inputHead">password</p>
+      <div style="display: flex;">
+        <input [type]="hide? 'password' :'text'" name="password" class="formInput" placeholder="Choose a password"
+          formControlName="password" />
+        <mat-icon class="material-icons-outlined" style="color: gray;font-size: 20px;cursor: pointer;"
+          (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </div>
+    </div>
+    <!-- Confirm Password -->
+    <div class="inputContainer">
+      <p class="inputHead">Repeat Password</p>
+      <div style="display: flex;">
+        <input [type]="hide? 'password' :'text'" name="confirmpassword" class="formInput" placeholder="Repeat your password"
+          formControlName="confirmpassword" />
+        <mat-icon class="material-icons-outlined" style="color: gray;font-size: 20px;cursor: pointer;"
+          (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- <div></div> -->
+  <button mat-raised-button [disabled]="!loginForm.valid || loginForm.get('password').value=='' || loginForm.get('password').value != loginForm.get('confirmpassword').value" (click)="registerData()" type="submit" class="primaryBtn">Next</button>
+  <button mat-button class="returnToLogin">
+    <mat-icon style="color: gray;font-size: 20px;cursor: pointer;display: inline;">arrow_left</mat-icon> Back To
+    Login
+  </button>
+</form>
